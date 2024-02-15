@@ -18,11 +18,17 @@ import java.math.BigDecimal;
 public class SiteUser extends BaseEntity {
     @Column(length = 200, unique = true)
     private String username;
+
     private String password;
+
     @Column(unique = true)
     private String email;
+
     private String phoneNum;
+
     private boolean role;
+
     private String seller_authorization;
+
     private BigDecimal point;
 }
