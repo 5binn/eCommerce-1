@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a th:href="@{/}">홈으로</a>
 <form th:action="@{/user/login}" method="post">
     <div th:if="${param.error}">
         <span>ID랑 비밀번호를 확인하세요</span>
