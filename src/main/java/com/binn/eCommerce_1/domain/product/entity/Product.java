@@ -1,6 +1,7 @@
 package com.binn.eCommerce_1.domain.product.entity;
 
 import com.binn.eCommerce_1.domain.shoppingCart.entity.ShoppingCart;
+import com.binn.eCommerce_1.domain.user.entity.SiteUser;
 import com.binn.eCommerce_1.global.jpa.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +25,8 @@ public class Product extends BaseEntity {
     private String content;
     private BigDecimal price;
     private Long wishCount;
+    @ManyToOne
+    private SiteUser sellerUser;
     private BigDecimal discountRate;
     private String productImg;
 }
