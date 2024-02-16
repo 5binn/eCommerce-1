@@ -17,9 +17,9 @@
         <tr th:each="product, loop : ${productList}">
             <td th:text="${loop.count}"></td>
             <td>
-                <a href="#" th:text="${product.title}"></a>
+                <a th:href="@{|/product/${product.id}|}" th:text="${product.title}"></a>
             </td>
-            <td th:text="${product.sellerUser.username}"></td>
+            <td th:text="${product.seller.username}"></td>
         </tr>
     </tbody>
 </table>

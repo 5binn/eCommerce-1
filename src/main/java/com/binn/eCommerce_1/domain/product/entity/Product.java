@@ -26,7 +26,7 @@ public class Product extends BaseEntity {
     private BigDecimal price;
     private Long wishCount;
     @ManyToOne
-    private SiteUser sellerUser;
+    private SiteUser seller;
     private BigDecimal discountRate;
     private String productImg;
 }
