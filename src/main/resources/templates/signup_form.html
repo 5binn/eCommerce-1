@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">
+        <div>
+            <label for="username">ID</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div>
+            <label for="email">이메일</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div>
+            <label for="phoneNum">연락처</label>
+            <input type="text" name="phoneNum" id="phoneNum">
+        </div>
+        <button type="submit">회원가입</button>
+    </form>
+
+</div>
+</body>
+</html>
