@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,6 +26,4 @@ public class Product extends BaseEntity {
     private Long wishCount;
     private BigDecimal discountRate;
     private String productImg;
-    @ManyToOne
-    private ShoppingCart shoppingCart;
 }
