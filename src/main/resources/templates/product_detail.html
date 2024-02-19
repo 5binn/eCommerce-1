@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품상세</title>
+</head>
+
+<body>
+<a th:href="@{/}">홈으로</a>
+<div>제목
+<h3 th:text="${product.title}"></h3>
+</div>
+<div>금액
+    <span th:text="${product.price}"></span>
+</div>
+<div>좋아요
+    <span th:text="${product.wishCount}"></span>
+</div>
+<div>작성자
+    <span th:text="${product.seller.username}"></span>
+</div>
+<div>내용
+    <span th:text="${product.content}"></span>
+</div>
+<div>
+    <a th:href="@{|/shoppingCart/create/${product.id}|}">장바구니담기</a>
+</div>
+<a th:href="@{|/product/${product.id}/modify|}" sec:authorize="isAuthenticated()"
+   th:if="${product.seller != null and #authentication.getPrincipal().getUsername() == product.seller.username}">수정</a>
+<a th:href="@{|/product/${product.id}/delete|}" sec:authorize="isAuthenticated()"
+   th:if="${product.seller != null and #authentication.getPrincipal().getUsername() == product.seller.username}">삭제</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품리스트</title>
+</head>
+<body>
+<a th:href="@{/}">홈으로</a>
+<table>
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product, loop : ${productList}">
+            <td th:text="${loop.count}"></td>
+            <td>
+                <a th:href="@{|/product/${product.id}|}" th:text="${product.title}"></a>
+            </td>
+            <td th:text="${product.seller.username}"></td>
+        </tr>
+    </tbody>
+</table>
+<a th:href="@{/product/create}" sec:authorize="isAuthenticated()">제품등록</a>
+</body>
+</html>

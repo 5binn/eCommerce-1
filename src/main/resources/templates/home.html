@@ -9,9 +9,13 @@
 <div>
     홈페이지
 </div>
+<div>
+    <a th:href="@{/product/list}">제품 리스트</a>
+</div>
 <a th:href="@{/user/login}" sec:authorize="isAnonymous()">로그인</a>
 <a th:href="@{/user/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
 <a th:href="@{/user/signup}">회원가입</a>
+<a th:href="@{/shoppingCart/list}" sec:authorize="isAuthenticated()">장바구니</a>
 
 </body>
 </html>

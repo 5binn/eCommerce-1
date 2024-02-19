@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니</title>
+</head>
+<body>
+<a th:href="@{/}">홈으로</a>
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>상품명</th>
+        <th>금액</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product, loop : ${productList}">
+        <td th:text="${loop.count}"></td>
+        <td>
+            <a th:href="@{|/product/${product.Id}|}" th:text="${product.title}"></a>
+        </td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:with="productList=${productList}">
+    <span>합계급액:</span>
+    <span th:text="${#aggregates.sum(productList.![price])}"></span>
+</div>
+</body>
+</html>
