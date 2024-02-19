@@ -1,5 +1,6 @@
 package com.binn.eCommerce_1.domain.user.entity;
 
+import com.binn.eCommerce_1.domain.product.entity.Product;
 import com.binn.eCommerce_1.domain.shoppingCart.entity.ShoppingCart;
 import com.binn.eCommerce_1.global.jpa.BaseEntity;
 import jakarta.persistence.CascadeType;
@@ -36,5 +37,5 @@ public class SiteUser extends BaseEntity {
 
     private BigDecimal point;
 
-    private List<ShoppingCart> shoppingCartList;
+
 }

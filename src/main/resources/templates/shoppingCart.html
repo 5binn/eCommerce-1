@@ -22,12 +22,11 @@
         </td>
         <td th:text="${product.price}"></td>
     </tr>
-    <tr th:with="total=0">
-        <div th:each="product : ${productList}" th:with="total=${total + product.price}"></div>
-        <span>합계급액:</span>
-        <span th:text="${total}"></span>
-    </tr>
     </tbody>
 </table>
+<div th:with="productList=${productList}">
+    <span>합계급액:</span>
+    <span th:text="${#aggregates.sum(productList.![price])}"></span>
+</div>
 </body>
 </html>

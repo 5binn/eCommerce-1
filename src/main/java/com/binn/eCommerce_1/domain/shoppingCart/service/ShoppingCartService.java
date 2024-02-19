@@ -3,8 +3,10 @@ package com.binn.eCommerce_1.domain.shoppingCart.service;
 import com.binn.eCommerce_1.domain.product.entity.Product;
 import com.binn.eCommerce_1.domain.shoppingCart.entity.ShoppingCart;
 import com.binn.eCommerce_1.domain.shoppingCart.repository.ShoppingCartRepository;
+import com.binn.eCommerce_1.domain.user.entity.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.parameters.P;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +16,10 @@ import java.util.List;
 public class ShoppingCartService {
     private final ShoppingCartRepository shoppingCartRepository;
 
-    public void create(Long userId, Long productId) {
+    public void create(SiteUser user, Product product) {
         ShoppingCart shoppingCart = ShoppingCart.builder()
-                .userId(userId)
-                .productId(productId)
+                .user(user)
+                .product(product)
                 .build();
         this.shoppingCartRepository.save(shoppingCart);
     }

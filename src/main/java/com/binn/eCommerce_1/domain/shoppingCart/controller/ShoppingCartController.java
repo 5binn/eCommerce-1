@@ -21,7 +21,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/ShoppingCart")
+@RequestMapping("/shoppingCart")
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
     private final UserService userService;
@@ -31,8 +31,9 @@ public class ShoppingCartController {
     @GetMapping("/create/{id}")
     public String create(@PathVariable("id") Long productId, Principal principal) {
         SiteUser user = this.userService.getUser(principal.getName());
-        this.shoppingCartService.create(user.getId(), productId);
-        return String.format("redirect:/product/$s", productId);
+        Product product = this.productService.getProduct(productId);
+        this.shoppingCartService.create(user, product);
+        return String.format("redirect:/product/%s", productId);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -42,7 +43,7 @@ public class ShoppingCartController {
         List<ShoppingCart> shoppingCartList = this.shoppingCartService.getShoppingCartByUserId(user.getId());
         List<Product> productList = new ArrayList<>();
         for (ShoppingCart shoppingCart : shoppingCartList) {
-            productList.add(this.productService.getProduct(shoppingCart.getProductId()));
+            productList.add(this.productService.getProduct(shoppingCart.getProduct().getId()));
         }
         model.addAttribute("productList", productList);
         return "shoppingCart";
